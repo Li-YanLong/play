@@ -5,10 +5,39 @@
 </head>
 
 <body>
+	<h1> 你好</h1>
+	<div></div>
 	<canvas id="canvas"></canvas>
 	<style type="text/css">
-body{margin: 0; padding: 0; overflow: hidden;}
-</style>
+		body{margin: 0; padding: 0; overflow: hidden;}
+		body h1{
+			width: 100%;
+			position: absolute;
+			text-align: center;
+			color: #f90;
+			font-size: 150px;
+			text-shadow: 5px 5px 10px red, -5px -5px 10px red;
+
+		}
+		div{
+				position: absolute;
+				margin-left: 30px;
+				margin-top: 30px;
+				width: 100px;
+				height: 100px;
+				background: #f6d66e;
+				border-radius: 50px;
+				box-shadow: 0 0 10px rgba(204,20,0,.8);
+				background: -webkit-linear-gradient(top,#f00,#f6d66e);
+				-webkit-animation: animations 1.5s ease infinite;
+			}
+			
+			@-webkit-keyframes animations{
+				0%{box-shadow: 0 0 20px rgba(201,20,0,.8);}
+				50%{box-shadow: 0 0 20px rgba(201,20,0,.3);}
+				100%{box-shadow: 0 0 20px rgba(201,20,0,.8);}
+			}
+	</style>
 <script type="text/javascript">
 var canvas = document.getElementById('canvas');
 		var ctx = canvas.getContext('2d');
