@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>黑客帝国效果</title>
+</head>
+
+<body>
+	<h1> 曾经沧海难为水，<br/>除却巫山不是云。<br/>
+	取次花丛懒回顾，<br/>半缘修道半缘君。</h1>
+	<div></div>
+	<canvas id="canvas"></canvas>
+	<style type="text/css">
+		body{margin: 0; padding: 0; overflow: hidden;}
+		body h1{
+			width: 100%;
+			position: absolute;
+			text-align: center;
+			color: #f90;
+			font-size: 30px;
+			text-shadow: 5px 5px 10px red, -5px -5px 10px red;
+
+		}
+		div{
+				position: absolute;
+				margin-left: 30px;
+				margin-top: 30px;
+				width: 100px;
+				height: 100px;
+				background: #f6d66e;
+				border-radius: 50px;
+				box-shadow: 0 0 10px rgba(204,20,0,.8);
+				background: -webkit-linear-gradient(top,#f00,#f6d66e);
+				-webkit-animation: animations 1.5s ease infinite;
+			}
+			
+			@-webkit-keyframes animations{
+				0%{box-shadow: 0 0 20px rgba(201,20,0,.8);}
+				50%{box-shadow: 0 0 20px rgba(201,20,0,.3);}
+				100%{box-shadow: 0 0 20px rgba(201,20,0,.8);}
+			}
+	</style>
+<script type="text/javascript">
+var canvas = document.getElementById('canvas');
+		var ctx = canvas.getContext('2d');
+
+
+		canvas.height = window.innerHeight;
+		canvas.width = window.innerWidth;
+
+		var texts = '❤'.split('');
+
+		var fontSize = 16;
+		var columns = canvas.width/fontSize;
+		// 用于计算输出文字时坐标，所以长度即为列数
+		var drops = [];
+		//初始值
+		for(var x = 0; x < columns; x++){
+			drops[x] = 1;
+		}
+
+		function draw(){
+			//让背景逐渐由透明到不透明
+			ctx.fillStyle = 'rgba(30, 0, 0, 0.05)';
+			ctx.fillRect(0, 0, canvas.width, canvas.height);
+			//文字颜色#0F0
+			ctx.fillStyle = 'red';
+			ctx.font = fontSize + 'px arial';
+			//逐行输出文字
+			for(var i = 0; i < drops.length; i++){
+				var text = texts[Math.floor(Math.random()*texts.length)];
+				ctx.fillText(text, i*fontSize, drops[i]*fontSize);
+
+				if(drops[i]*fontSize > canvas.height || Math.random() > 0.95){
+					drops[i] = 0;
+				}
+
+				drops[i]++;
+			}
+		}
+
+		setInterval(draw, 50);
+</script>
+</body>
+</html>
